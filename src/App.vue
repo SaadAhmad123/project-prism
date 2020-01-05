@@ -7,8 +7,6 @@
 
 <script>
 import '@/assets/css/main.css';
-import 'vue-range-component/dist/vue-range-slider.min.css';
-
 import NavComponent from '@/components/nav-component.vue';
 
 export default {
