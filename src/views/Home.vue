@@ -11,9 +11,6 @@ import HomeHeroComponent from '@/components/home-hero-component.vue';
 
 export default {
   name: 'home',
-  data : function(){
-    
-  },
   components: {
     'home-hero-component' : HomeHeroComponent,
     'biguzzi-model-component' : BiguzziModelCompnent,

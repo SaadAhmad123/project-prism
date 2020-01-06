@@ -1,13 +1,13 @@
 <template>
-    <div id="age-param-component">
+    <div id="hemoglobin-param-component">
         <model-slider-component 
-            parameter="Age"
-            :min="10"
-            :max="120"
+            parameter="Hemoglobin"
+            :min="7"
+            :max="17"
             :step="0.1"
-            :modelFunction="this.ageModelFunction"
+            :modelFunction="this.hemoglobinModelFunction"
             :value="value"
-            v-on:update:riskFactor="$emit('update:ageRiskFactor', $event)"
+            v-on:update:riskFactor="$emit('update:hemoglobinRiskFactor', $event)"
         />
     </div>
 </template>
@@ -17,18 +17,18 @@ import ModelSliderComponent from '@/components/model-slider-component.vue';
 
 
 export default {
-    name:"age-param-component",
+    name:"hemoglobin-param-component",
     props:[
         'preset',
     ],
     data : function(){
         return {
-            value : this.preset? this.preset : 25
+            value : this.preset? this.preset : 9.5
         }
     },
     methods: {
-        ageModelFunction(val){
-            return 0.7857 * val - 11.786;
+        hemoglobinModelFunction(val){
+            return -5.1 * val - 86.7;
         },
     },
     components : {
