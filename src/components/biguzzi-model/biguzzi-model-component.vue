@@ -1,32 +1,36 @@
 <template>
-    <div id="biguzzi-model-container" class="container mx-auto my-12 px-6 font-normal">
-        <p class="text-sm font-thin text-gray-700 mb-4">
-            Please, enter the appropriate values so that the model may be
-            able to calulate the risk of <span class="italic">Postpartum Heamorrhage</span>.
-        </p>
-        
-        <age-param-component :ageRiskFactor.sync = "ageRiskFactor" :preset="null"/>
-        <weight-param-component :weightRiskFactor.sync = "weightRiskFactor" :preset="null" />
-        <hemoglobin-param-component :hemoglobinRiskFactor.sync = "hemoglobinRiskFactor" :preset="null" />
-        <neo-weight-np-param-component :neoWeightNPRiskFactor.sync = "neoWeightNPRiskFactor" :preset="null"/>
-        <neo-weight-pp-param-component :neoWeightPPRiskFactor.sync = "neoWeightPPRiskFactor" :preset="null"/>
-        <neo-weight-mp-param-component :neoWeightMPRiskFactor.sync = "neoWeightMPRiskFactor" :preset="null"/>
-        <placenta-weight-param-component :placentaWeightRiskFactor.sync= "placentaWeightRiskFactor" :preset="null"/>
-        <vacuum-param-component :vacuumRiskFactor.sync = "vacuumRiskFactor" :preset="null"/>
-        <kristeller-param-component :kristellerRiskFactor.sync= "kristellerRiskFactor" :preset="null"/>
-        <laceration-param-component :lacerationRiskFactor.sync= "lacerationRiskFactor"  :preset="null"/>
-        <episiotomy-param-component :episiotomyRiskFactor.sync = "episiotomyRiskFactor" :preset="null"/>
-        <restrained-placenta-param-component :restrainedPlacentaRiskFactor.sync = "restrainedPlacentaRiskFactor" :preset="null" />
-        <ethnicity-param-component :ethnicityRiskFactor.sync = "ethnicityRiskFactor" :preset="null" />
-        
-        <div class="fixed bottom-0 right-0">
-            <h1 class="text-3xl">Sum {{sum.toFixed(3)}}</h1>
-        </div>
+    <div>
+        <home-hero-component />
+        <div id="biguzzi-model-container" class="container mx-auto my-12 px-6 font-normal">
+            <p class="text-sm font-thin text-gray-700 mb-4">
+                Please, enter the appropriate values so that the model may be
+                able to calulate the risk of <span class="italic">Postpartum Heamorrhage</span>.
+            </p>
+            
+            <age-param-component :ageRiskFactor.sync = "ageRiskFactor" :preset="null"/>
+            <weight-param-component :weightRiskFactor.sync = "weightRiskFactor" :preset="null" />
+            <hemoglobin-param-component :hemoglobinRiskFactor.sync = "hemoglobinRiskFactor" :preset="null" />
+            <neo-weight-np-param-component :neoWeightNPRiskFactor.sync = "neoWeightNPRiskFactor" :preset="null"/>
+            <neo-weight-pp-param-component :neoWeightPPRiskFactor.sync = "neoWeightPPRiskFactor" :preset="null"/>
+            <neo-weight-mp-param-component :neoWeightMPRiskFactor.sync = "neoWeightMPRiskFactor" :preset="null"/>
+            <placenta-weight-param-component :placentaWeightRiskFactor.sync= "placentaWeightRiskFactor" :preset="null"/>
+            <vacuum-param-component :vacuumRiskFactor.sync = "vacuumRiskFactor" :preset="null"/>
+            <kristeller-param-component :kristellerRiskFactor.sync= "kristellerRiskFactor" :preset="null"/>
+            <laceration-param-component :lacerationRiskFactor.sync= "lacerationRiskFactor"  :preset="null"/>
+            <episiotomy-param-component :episiotomyRiskFactor.sync = "episiotomyRiskFactor" :preset="null"/>
+            <restrained-placenta-param-component :restrainedPlacentaRiskFactor.sync = "restrainedPlacentaRiskFactor" :preset="null" />
+            <ethnicity-param-component :ethnicityRiskFactor.sync = "ethnicityRiskFactor" :preset="null" />
+            
+            <div class="fixed bottom-0 right-0">
+                <h1 class="text-3xl">Sum {{sum.toFixed(3)}}</h1>
+            </div>
 
+        </div>
     </div>
 </template>
 
 <script>
+import HomeHeroComponent from '@/components/biguzzi-model/home-hero-component.vue';
 import AgeParamComponent from '@/components/biguzzi-model/age-param-component.vue';
 import WeightParamComponent from '@/components/biguzzi-model/weight-param-component.vue';
 import HemoglobinParamComponent from '@/components/biguzzi-model/hemoglobin-param-component.vue';
@@ -59,7 +63,7 @@ export default {
         'laceration-param-component' : LacerationParamComponent,
         'episiotomy-param-component' : EpisiotomyParamComponent,
         'restrained-placenta-param-component' : RestrainedPlacentaParamComponent,
-        
+        'home-hero-component' : HomeHeroComponent,
     },
     data : function(){
         return {

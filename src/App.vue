@@ -13,10 +13,7 @@ export default {
   name: 'app',
   components : {
     'nav-component' : NavComponent,
+    
   }
 }
 </script>
-
-<style>
-
-</style>

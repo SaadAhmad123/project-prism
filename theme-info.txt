@@ -1,0 +1,3 @@
+# Color Pallete
+
+- indigo-900 ---- dark
