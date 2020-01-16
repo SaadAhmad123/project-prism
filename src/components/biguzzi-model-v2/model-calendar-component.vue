@@ -1,8 +1,8 @@
 <template>
-    <div id="model-calendar-component" class="px-8 sm:px-16">
+    <div id="model-calendar-component" class="px-4 pb-2 lg:px-16">
         <model-variable-heading :text="config.name"/>
-        <div class="flex flex-wrap">
-            <div class="mr-4 sm:mr-8">
+        <div class="flex flex-wrap justify-between">
+            <div class="pr-4 sm:pr-8 pb-4 w-full md:w-1/2">
                 <v-date-picker 
                     :input-props='{
                         class: "w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 hover:border-blue-5",
@@ -15,19 +15,19 @@
                     v-model="date"
                     :max-date="new Date()"
                 />
-                <div class="my-4">
-                    <model-alert-component
-                        :success="this.age!=null && !this.ageInvalid"
-                        :warning="this.age==null && !this.ageInvalid"
-                        :danger="this.age!=null && this.ageInvalid"
-                        :text='alertText'
-                    />
-                </div>
             </div>
-            <div>
-                <div class="flex flex-wrap items-center">
-                    <model-display-component title="Age" :text='this.age!=null && !this.ageInvalid ? age : "??"'/>
-                    <model-display-component v-if="this.points!=null" title="Points" :text='points.toFixed(1)'/>
+            <div class="w-full md:w-1/2">
+                <div>
+                    <div class="flex flex-wrap items-start justify-end">
+                        <model-alert-component
+                            class="my-4 sm:my-0"
+                            :warning="this.age==null && !this.ageInvalid"
+                            :danger="this.age!=null && this.ageInvalid"
+                            :text='alertText'
+                            />
+                        <model-display-component v-if="config.displayPoints && (this.age!=null && !this.ageInvalid)" :title="config.displayName" :text='this.age!=null && !this.ageInvalid ? age : "??"'/>
+                        <model-display-component v-if="config.displayPoints && (this.points!=null)" title="Points" :text='points.toFixed(1)'/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,8 +73,7 @@ export default {
             return false;
         },
         'alertText' : function(){
-            if (this.age!=null&&!this.ageInvalid){return "Success"}
-            else if(this.age==null&&!this.ageInvalid){return "Select a date of birth"}
+            if(this.age==null&&!this.ageInvalid){return "Select a date of birth"}
             else if(this.age!=null&&this.ageInvalid){return "Please select a valid date of birth"}
             else {return ""}
         },
@@ -86,8 +85,7 @@ export default {
         'result' : function(){
             var _result =  {
                 code : this.config.code,
-                age : this.age,
-                dob : this.date,
+                value : this.date,
                 points : this.points
             };
             return _result

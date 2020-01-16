@@ -1,5 +1,5 @@
 <template>
-    <p class="border-l-8 border-blue-800 text-3xl font-thin text-blue-800 bg-blue-100 pl-4 mb-4">{{text}}</p>
+    <p class="border-l-8 border-blue-800 text-3xl font-thin text-blue-800 bg-blue-100 pl-4 mb-8">{{text}}</p>
 </template>
 
 <script>

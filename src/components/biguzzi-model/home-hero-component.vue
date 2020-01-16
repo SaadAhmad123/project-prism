@@ -4,7 +4,7 @@
       <p class="text-lg sm:text-xl md:text-3xl xl:text-4xl font-hairline text-left text-white">
         This evidence tool is designed to help the midwives and doctors predict a woman's
         risk of <span class="italic font-bold">Postpartum Haemorrhage</span> <sup><a href="https://en.wikipedia.org/wiki/Postpartum_bleeding" class="text-sm text-white hover:text-blue-300" title="What is Postpartum Haemorrhage?" target="_blank">[1]</a></sup>. This tool is informed by 
-        a prognostic model publish by <span class="italic">Biguzzi et al</span> <sup><a href="https://www.ncbi.nlm.nih.gov/pubmed/22018996" class="text-sm text-white hover:text-blue-300" title="Go to relevant publication" target="_blank">[2]</a></sup>. 
+        a prognostic model publish by <span class="italic underline">Biguzzi et al</span> <sup><a href="https://www.ncbi.nlm.nih.gov/pubmed/22018996" class="text-sm text-white hover:text-blue-300" title="Go to relevant publication" target="_blank">[2]</a></sup>. 
       </p>
     </div>
     <div class="flex items-center flex-wrap px-8 sm:px-16 md:px-20 lg:px-24 py-4 lg:py-6 pb-2 sm:pb-4 bg-blue-800">
