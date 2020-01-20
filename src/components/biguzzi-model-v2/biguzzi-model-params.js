@@ -12,7 +12,11 @@ export default [
             maxAge : 50,
             displayName : 'Age',
             displayPoints : true,
-            modelFunction : function(x){ return 0.7857 * x - 11.786},
+            modelFunction : function(x, config){
+                if(!config.code) return null // don't return anything if code not mentioned in config-- dumy use of the variable to stop the error from occuring
+                return 0.7857142857142857 * x - 11.785714285714285 
+            },
+            range_info : "The model age range is 15 to 50 years."
         },
     },
     {
@@ -32,9 +36,15 @@ export default [
             },
             displayPoints : true,
             displayName : 'Kilograms',
-            modelFunction : function(x){return 0.2364 * x - 9.4545;},
+            range_info : "The model weight range is 40kg to 140kg.",
+            modelFunction : function(x, config){
+                if(!config.code) return null // don't return anything if code not mentioned in config-- dumy use of the variable to stop the error from occuring
+                return 0.23636363636363636 * x - 9.454545454545455
+            },
             validateInput : function(x, validConfig){
-                validConfig.x = null;return x;
+                if (x > validConfig.max) return validConfig.max;
+                if (x < validConfig.min) return validConfig.min;
+                return x;
             }
         }
     },
@@ -55,9 +65,15 @@ export default [
             },
             displayPoints : true,
             displayName : 'Quantity',
-            modelFunction : function(x){return -5.1 * (x/10) - 86.7;},
+            range_info : "The model range is 70g/L to 170g/L.",
+            modelFunction : function(x, config){
+                if(!config.code) return null // don't return anything if code not mentioned in config-- dumy use of the variable to stop the error from occuring
+                return -0.51 * x + 86.7
+            },
             validateInput : function(x, validConfig){
-                validConfig.x = null;return x;
+                if (x > validConfig.max) return validConfig.max;
+                if (x < validConfig.min) return validConfig.min;
+                return x;
             }
         }
     },
@@ -78,9 +94,15 @@ export default [
             },
             displayPoints : true,
             displayName : 'Quantity',
-            modelFunction : function(x){return -5.1 * (x/10) - 86.7;},
+            range_info : "The model range is 2 to 24 (x 30,000/uL)", 
+            modelFunction : function(x, config){
+                if(!config.code) return null // don't return anything if code not mentioned in config-- dumy use of the variable to stop the error from occuring
+                return -1.1363636363636365 * x + 27.272727272727273
+            },
             validateInput : function(x, validConfig){
-                validConfig.x = null;return x;
+                if (x > validConfig.max) return validConfig.max;
+                if (x < validConfig.min) return validConfig.min;
+                return x;
             }
         }
     },
@@ -101,9 +123,15 @@ export default [
             },
             displayPoints : true,
             displayName : 'Grams',
-            modelFunction : function(x){return 0.0622 * x - 6.222;},
+            range_info : 'The model range is 0g to 1000g.',
+            modelFunction : function(x, config){
+                if(!config.code) return null // don't return anything if code not mentioned in config-- dumy use of the variable to stop the error from occuring
+                return 0.06222222222222222 * x - 6.222222222222222;
+            },
             validateInput : function(x, validConfig){
-                validConfig.x = null;return x;
+                if (x > validConfig.max) return validConfig.max;
+                if (x < validConfig.min) return validConfig.min;
+                return x;
             }
         }
     },
@@ -115,12 +143,12 @@ export default [
         variableConfig : {
             preset : null,
             code : 'womenBirthHistory',
-            name : 'Woman birth history',
-            options : ['First pregnancy', 'First baby', 'Multiple babies'],
+            name : 'Parity',
+            options : ['Nulliparous', 'Primiparous', 'Multiparous'],
             mapping : {
-                'First pregnancy' : 0,     // model --> Nulliparous
-                'First baby' : 1,               // model --> Primiparous
-                'Multiple babies' : 2,          // model --> Multiparous
+                'Nulliparous' : 0,              // model --> Nulliparous
+                'Primiparous' : 1,              // model --> Primiparous
+                'Multiparous' : 2,              // model --> Multiparous
             },
             displayPoints : false,
         }
@@ -137,14 +165,24 @@ export default [
             validConfig : {
                 inputType : 'number',
                 min : 0,
-                max : 5000,
+                max : 5500,
                 step : 0.1,
             },
             displayPoints : true,
             displayName : 'Grams',
-            modelFunction : function(x){return x;},
+            womenBirthHistory : null,
+            range_info : 'The model range is 1500g to 5500g.',
+            modelFunction : function(x, config){
+                var wbh = config.womenBirthHistory;
+                if (wbh == 0) return 0.02125 * x - 16.875000000000004   // Nulliparous
+                if (wbh == 1) return 0.00625 * x + 16.625               // Primiparous
+                if (wbh == 2) return 0.01025 * x - 15.375               // Multiparous
+                return null
+            },
             validateInput : function(x, validConfig){
-                validConfig.x = null;return x;
+                if (x > validConfig.max) return validConfig.max;
+                if (x < validConfig.min) return validConfig.min;
+                return x;
             }
         }
     },
@@ -194,8 +232,8 @@ export default [
             options : ['No', 'Median', 'Paramedian'],
             mapping : {
                 "No": 0,
-                "Median" : 12.5,
-                "Paramedian" : 12.5,
+                "Median" : 9,
+                "Paramedian" : 27.5,
             },
             displayPoints : true,
         }

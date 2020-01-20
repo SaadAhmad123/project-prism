@@ -15,6 +15,7 @@
                     v-model="date"
                     :max-date="new Date()"
                 />
+                <p class="mt-4 text-gray-500 text-sm"><font-awesome-icon icon="info-circle" class="mr-2"/>{{config.range_info}}</p>
             </div>
             <div class="w-full md:w-1/2">
                 <div>
@@ -79,7 +80,7 @@ export default {
         },
         'points' : function(){
             if(this.date==null || this.ageInvalid) return null;
-            var _points =  this.config.modelFunction(this.age);
+            var _points =  this.config.modelFunction(this.age, this.config);
             return _points;
         },
         'result' : function(){

@@ -19,8 +19,8 @@
                     />
                     <!-- content here -->
                 </div>
-                <div id="model-result-panel-not-mobile" class="hidden sm:block w-full sm:h-screen sm:w-1/3 sticky top-0 py-8">
-                    <div class="h-full pl-4 border-l pr-8 lg:pr-4">
+                <div id="model-result-panel-not-mobile" class="hidden sm:block w-full sm:h-screen sm:w-1/3 sticky top-0 py-8 bg-blue-100">
+                    <div class="h-full pl-4 pr-8 lg:pr-4">
                         <model-results-component :points="points"/>
                     </div>
                 </div>
@@ -72,6 +72,7 @@ export default {
             if(val==null || val.points==null) {this.modelVariables[_index].variableConfig.name = 'Neonatal Weight (grams)'; return;}
             var nw_config = ['Nulliparous', 'Primiparous', 'Multiparous'];
             this.modelVariables[_index].variableConfig.name = 'Neonatal Weight (grams) - ' + nw_config[val.points];
+            this.modelVariables[_index].variableConfig.womenBirthHistory = val.points;
         }
     }
 }

@@ -1,16 +1,20 @@
 <template>
     <div id="model-result-component">
-        <p class="text-xl lg:text-4xl text-blue-800 font-thin mb-4"><font-awesome-icon icon="chart-pie" class="inline-block mr-4"/>Prognosis <span class="font-bold">report</span></p>
-        <div class="mb-4">
+        <p class="text-xl text-center lg:text-4xl text-blue-800 font-thin mb-4"><font-awesome-icon icon="chart-pie" class="inline-block mr-4"/>Prognosis <span class="font-bold">report</span></p>
+        <div class="mb-4 flex justify-center">
             <model-alert-component 
                 :warning="!this.allVarSubmited" 
                 :success="this.allVarSubmited"
                 :text="this.allVarSubmited ? 'All observations successfully submitted' : 'Please enter the required observations'"/>
         </div>
-        <div class="flex flex-wrap items-start justify-between mt-8">
-            <div></div>
-            <div>
-                <model-display-component title="% Risk" :text="parseFloat(risk_percent).toFixed(1)" :color="riskDisplayColor"/>
+        <div class="mt-8">
+            <div class="justify-stretch items-stretch lg:mb-4 p-2 rounded" :class="riskDisplayColor">
+                <p class="font-thin text-xl text-center text-blue-900">Evaluated PPH Risk: <strong class="italic">{{parseFloat(risk_percent.risk).toFixed(2)}}%</strong></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="" style="max-width:224px">
+                    <risk-chart-component :risk="this.risk_percent.risk"/>
+                </div>
             </div>
         </div>
     </div>
@@ -18,7 +22,7 @@
 
 <script>
 import ModelAlertComponent from '@/components/biguzzi-model-v2/model-alert-component.vue'
-import ModelDisplayComponent from '@/components/biguzzi-model-v2/model-display-component.vue'
+import RiskChartComponent from '@/components/biguzzi-model-v2/risk-chart-component.vue'
 
 
 export default {
@@ -26,10 +30,12 @@ export default {
     props : ['points'],
     components : {
         "model-alert-component" : ModelAlertComponent,
-        "model-display-component" : ModelDisplayComponent,
+        //"model-display-component" : ModelDisplayComponent,
+        "risk-chart-component" : RiskChartComponent,
     },
     data : function(){
-        return {}
+        return {
+        }
     },
     computed : {
         'allVarSubmited' : function(){
@@ -42,12 +48,15 @@ export default {
                 if(this.points[i]==null||this.points[i].points==null) continue;
                 _sum += parseFloat(this.points[i].points)
             }
-            return _sum;
+            // the risk equation
+            var y = -5.57091575e-07 * Math.pow(_sum,3)   + 3.34292829e-04 * Math.pow(_sum,2) + -5.83362596e-02 * Math.pow(_sum,1) +  3.25449608e+00
+            if(_sum < 130) return {risk : 0, sum : _sum, calculated_risk : y};
+            return {risk : y * 100, sum : _sum, calculated_risk : y};
         },
         'riskDisplayColor' : function(){
-            if(parseFloat(this.risk_percent) < 33.33) return 'bg-green-700';
-            if(parseFloat(this.risk_percent) < 66.66) return 'bg-yellow-600';
-            return 'bg-red-700'
+            if(parseFloat(this.risk_percent.risk) < 33.33) return 'bg-green-200';
+            if(parseFloat(this.risk_percent.risk) < 66.66) return 'bg-yellow-200';
+            return 'bg-red-200'
         },
     }
 }
