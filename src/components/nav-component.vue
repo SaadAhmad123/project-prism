@@ -4,13 +4,13 @@
             <div class="flex flex-wrap items-center justify-start">
                 <a href="https://www.monash.edu/" target="_blank"><img class="h-16 border-r pr-2 mr-4" :src="require('@/assets/logo.png')"/></a>
                 <router-link to="/">
-                <p class="text-lg font-thin text-gray-800">
+                <p class="text-lg font-thin text-blue-900">
                     <span class="font-extrabold">PPH</span> 
                     Prognostics
                 </p>
                 </router-link>
             </div>
-            <div class="">
+            <div class="text-blue-900">
                 <router-link class="pl-4 hover:underline" to="/about">About</router-link>
             </div>
         </div>

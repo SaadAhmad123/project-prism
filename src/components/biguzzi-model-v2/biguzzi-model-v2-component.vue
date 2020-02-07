@@ -5,6 +5,7 @@
             <div class="sm:flex sm:flex-wrap sm:items-start">
                 <div id="model-result-panel-mobile" class="w-full block sm:hidden sticky top-0">
                     <!-- content here -->
+                    <model-mobile-results-component :points="points"/>
                 </div>
                 <div id="model-variables-panel" class="w-full sm:w-2/3 py-16">
                     <model-variable-component 
@@ -19,8 +20,8 @@
                     />
                     <!-- content here -->
                 </div>
-                <div id="model-result-panel-not-mobile" class="hidden sm:block w-full sm:h-screen sm:w-1/3 sticky top-0 py-8 bg-blue-100">
-                    <div class="h-full pl-4 pr-8 lg:pr-4">
+                <div id="model-result-panel-not-mobile" style="overflow-y:scroll" class="hidden sm:block w-full sm:h-screen sm:w-1/3 sticky top-0 py-8 bg-blue-100">
+                    <div class="h-full pl-4 pr-8 lg:pr-4" >
                         <model-results-component :points="points"/>
                     </div>
                 </div>
@@ -35,6 +36,7 @@ import HomeHeroComponent from '@/components/biguzzi-model/home-hero-component.vu
 import ModelVariableComponent from '@/components/biguzzi-model-v2/model-variable-component.vue'
 import BiguzziModelParams from "@/components/biguzzi-model-v2/biguzzi-model-params.js"
 import ModelResultsComponent from "@/components/biguzzi-model-v2/model-results-component.vue"
+import ModelMobileResultsComponent from "@/components/biguzzi-model-v2/model-mobile-results-component.vue"
 
 
 export default {
@@ -43,6 +45,7 @@ export default {
         'home-hero-component' : HomeHeroComponent,
         'model-variable-component' : ModelVariableComponent,
         'model-results-component' : ModelResultsComponent,
+        'model-mobile-results-component' : ModelMobileResultsComponent,
     },
     data : function(){
         return {
@@ -70,7 +73,7 @@ export default {
                 if (this.modelVariables[i].variableConfig.code === 'neonatalWeight') _index = i;
             }
             if(val==null || val.points==null) {this.modelVariables[_index].variableConfig.name = 'Neonatal Weight (grams)'; return;}
-            var nw_config = ['Nulliparous', 'Primiparous', 'Multiparous'];
+            var nw_config = ['1st delivery', '2nd delivery', '3rd or more delivery'];
             this.modelVariables[_index].variableConfig.name = 'Neonatal Weight (grams) - ' + nw_config[val.points];
             this.modelVariables[_index].variableConfig.womenBirthHistory = val.points;
         }

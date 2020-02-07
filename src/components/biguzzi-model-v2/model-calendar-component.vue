@@ -1,6 +1,6 @@
 <template>
     <div id="model-calendar-component" class="px-4 pb-2 lg:px-16">
-        <model-variable-heading :text="config.name"/>
+        <model-variable-heading :text="config.name" :info="config.info"/>
         <div class="flex flex-wrap justify-between">
             <div class="pr-4 sm:pr-8 pb-4 w-full md:w-1/2">
                 <v-date-picker 

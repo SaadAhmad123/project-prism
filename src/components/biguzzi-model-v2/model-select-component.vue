@@ -1,6 +1,6 @@
 <template>
     <div id="model-select-component" class="px-4 pb-2 lg:px-16">
-        <model-variable-heading :text="config.name"/>
+        <model-variable-heading :text="config.name" :info="config.info"/>
         
         <div class="flex flex-wrap justify-between">
             <div  class="pr-4 sm:pr-8 w-full md:w-1/2">
