@@ -57,7 +57,7 @@ export default {
     },
     data : function(){
         return {
-            'input' : null,
+            'input' : this.config.preset,
         }
     },
     computed : {

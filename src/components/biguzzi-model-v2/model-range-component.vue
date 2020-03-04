@@ -34,9 +34,7 @@ export default {
             'model-alert-component' : ModelAlertComponent,
             'model-display-component' : ModelDisplayComponent,
     },
-    props : {
-        'config' : Object,
-    },
+    props : ['config'],
     data : function(){
         return {
             'input' : this.config.preset ? this.config.preset : "",
@@ -61,7 +59,7 @@ export default {
                 else this.validInput = this.config.validateInput(val, this.config.validConfig) 
             },
             'result' : function(val){
-            this.$emit('update:result', val)
+                this.$emit('update:result', val)
             }
     },
 }
