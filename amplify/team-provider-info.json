@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-project-prism-dev-112602-authRole",
+            "UnauthRoleArn": "arn:aws:iam::048654668097:role/amplify-project-prism-dev-112602-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::048654668097:role/amplify-project-prism-dev-112602-authRole",
+            "Region": "ap-southeast-2",
+            "DeploymentBucketName": "amplify-project-prism-dev-112602-deployment",
+            "UnauthRoleName": "amplify-project-prism-dev-112602-unauthRole",
+            "StackName": "amplify-project-prism-dev-112602",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:048654668097:stack/amplify-project-prism-dev-112602/69efad50-5765-11ea-b411-02f7636bd36c",
+            "AmplifyAppId": "d2va4lilv0bdd"
+        }
+    }
+}

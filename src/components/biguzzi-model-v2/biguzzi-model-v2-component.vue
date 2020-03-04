@@ -32,7 +32,7 @@
 
 <script>
 
-import HomeHeroComponent from '@/components/biguzzi-model/home-hero-component.vue'
+import HomeHeroComponent from '@/components/biguzzi-model-v2/home-hero-component.vue'
 import ModelVariableComponent from '@/components/biguzzi-model-v2/model-variable-component.vue'
 import BiguzziModelParams from "@/components/biguzzi-model-v2/biguzzi-model-params.js"
 import ModelResultsComponent from "@/components/biguzzi-model-v2/model-results-component.vue"
